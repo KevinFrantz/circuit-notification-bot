@@ -1,9 +1,21 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * @var string The config file path
+ */
 const CONFIG_FILE_PATH = './config.php';
 
+/**
+ * @var string The url to the circuit sandbox
+ */
 const CIRCUIT_SANDBOX_HOST_URL = 'https://circuitsandbox.net';
+
+/**
+ * @todo Ask if the constant describes the use case right
+ * @var string The circuit production url 
+ */
+const CIRCUIT_PRODUCTION_URL = 'https://eu.yourcircuit.com';
 
 if(count($argv) < 2)
 {
@@ -20,8 +32,22 @@ if($argv[1] == "help")
     exit(0);
 }
 
+/**
+ * @todo Describe this variable
+ * @var Ambiguous $bot_dir
+ */
 $bot_dir=$argv[1];
+
+/**
+ * @todo Describe this variable
+ * @var Ambiguous $test_plugin
+ */
 $test_plugin=isset($argv[2]) && $argv[2] == "test_plugin";
+
+/**
+ * @todo Describe this variable
+ * @var Ambiguous $get_token
+ */
 $get_token=isset($argv[2]) && $argv[2] == "token";
 
 if(is_dir($bot_dir))
@@ -31,17 +57,15 @@ if(is_dir($bot_dir))
 
     require_once('./vendor/autoload.php');
 
-    $config_file = CONFIG_FILE_PATH;
-
     /**
      * @var array $config Containes the configuration elements
      * @see config.php.example
      */
     $config = [];
 
-    if(is_file($config_file))
+    if(is_file(CONFIG_FILE_PATH))
     {
-        require_once($config_file); // . is PWD not __DIR__ !
+        require_once(CONFIG_FILE_PATH); // . is PWD not __DIR__ !
     }
 
     if($test_plugin)
@@ -51,9 +75,9 @@ if(is_dir($bot_dir))
     }
     elseif($get_token)
     {
-        $host = isset($argv[3]) ? $argv[3] : "https://eu.yourcircuit.com";
+        $host = isset($argv[3]) ? $argv[3] : CIRCUIT_PRODUCTION_URL;
 
-        if($host == "sandbox")
+        if($host === "sandbox")
         {
             $host = CIRCUIT_SANDBOX_HOST_URL;
         }
@@ -62,8 +86,6 @@ if(is_dir($bot_dir))
 
         exit(0);
     }
-
-
     circuit_bot($config);
 }
 else
