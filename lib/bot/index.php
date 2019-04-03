@@ -141,7 +141,7 @@ if (! function_exists('circuit_bot')) {
         }
     }
 
-    function circuit_message_truncate($msg)
+    function circuit_message_truncate(string $msg)
     {
         /**
          *
@@ -176,7 +176,10 @@ if (! function_exists('circuit_bot')) {
         return $msg;
     }
 
-    function circuit_send_message($content)
+    /**
+     * @param string $content
+     */
+    function circuit_send_message(string $content)
     {
         global $config;
 
@@ -232,19 +235,41 @@ if (! function_exists('circuit_bot')) {
     final class AdvancedMessage
     {
 
+        /**
+         * 
+         * @var integer ID off the parent message 
+         */
         public $parent;
 
+        /**
+         * @var string
+         */
         public $message;
 
+        /**
+         * @var string
+         */
         public $title;
 
+        /**
+         * 
+         * @var integer
+         */
         public $id;
 
+        /**
+         * 
+         * @var string Alphanumerischer Wert mit bindestrich
+         */
         public $conv_id;
 
         private static $nextId = 0;
 
-        public function __construct($message, $parent = null)
+        /**
+         * @param string $message
+         * @param int $parent
+         */
+        public function __construct(string $message, int $parent = null)
         {
             $this->id = AdvancedMessage::$nextId ++;
             $this->message = $message;
@@ -261,7 +286,12 @@ if (! function_exists('circuit_bot')) {
         }
     }
 
-    function verify_token($token)
+    /**
+     * 
+     * @param string $token
+     * @return boolean
+     */
+    function verify_token(string $token)
     {
         try {
             echo "Veryfing token...", PHP_EOL;

@@ -34,8 +34,6 @@ if(!function_exists('example_wakeup'))
 
     function example_wakeup_advanced_wo_parent()
     {
-        global $plugin_states;
-
         $msg = new AdvancedMessage('Hello?');
         $msg->record_id('ciis0.example'); // to be able to determine if it's ours, see example_parent_id
 
@@ -66,8 +64,6 @@ if(!function_exists('example_wakeup'))
 
     function example_wakeup_advanced_w_title()
     {
-        global $plugin_states;
-
         $mes = new AdvancedMessage('Hello.');
         $mes->title = 'Title.';
         $mes->record_id('ciis0.example');
