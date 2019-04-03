@@ -210,8 +210,6 @@ if (! function_exists('circuit_bot')) {
                 $result = $api_instance->addTextItemWithParent($conv_id, $msg_adv->parent, $content, [ /* attachments */
                 ], $msg_adv->title);
             } else {
-                global $hooks;
-
                 $result = $api_instance->addTextItem($conv_id, $content, [ /* attachments */
                 ], $msg_adv->title);
 
