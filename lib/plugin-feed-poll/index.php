@@ -10,6 +10,9 @@ if(!function_exists('wakeup_feed'))
     function feed_init()
     {
         global $config;
+        /**
+         * @todo ask why it is defined global
+         */
         global $plugin_states;
 
         $plugin_states['ciis0.feed-poll'] = [
