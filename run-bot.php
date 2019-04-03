@@ -34,18 +34,14 @@ if(is_dir($bot_dir))
     $config_file = CONFIG_FILE_PATH;
 
     /**
-     * In the following lines the variable will be tested, if it is an array, also if it's not modified. 
-     * @todo Ask if this is correct, or what the idea behind it is and modify it. 
+     * @var array $config Containes the configuration elements
+     * @see config.php.example
      */
-    $config;
+    $config = [];
 
     if(is_file($config_file))
     {
         require_once($config_file); // . is PWD not __DIR__ !
-    }
-    elseif(!is_array($config)) // this file meight be included and config already set.
-    {
-        $config = [];
     }
 
     if($test_plugin)
