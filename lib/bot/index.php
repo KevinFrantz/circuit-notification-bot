@@ -58,7 +58,7 @@ if (! function_exists('circuit_bot')) {
          * @var array $config
          */
         $config = $the_config; // make config available in filters and actions
-        
+
         $plugin_states = [];
         $hooks_only = hooks_only($config);
 
@@ -117,8 +117,8 @@ if (! function_exists('circuit_bot')) {
 
         echo 'Running hooks', PHP_EOL;
 
-        $wakeup = $hooks->do_action(ACTION_WAKEUP);
-        $wakeup_advanced = $hooks->do_action(ACTION_WAKEUP_ADV);
+        $hooks->do_action(ACTION_WAKEUP);
+        $hooks->do_action(ACTION_WAKEUP_ADV);
 
         if (! $hooks_only) {
             try {
@@ -144,16 +144,19 @@ if (! function_exists('circuit_bot')) {
     function circuit_message_truncate($msg)
     {
         /**
+         *
          * @var integer $maxlen
          */
         $maxlen = 2048;
-        
+
         /**
+         *
          * @var string $toolongmsg
          */
         $toolongmsg = '...';
-        
+
         /**
+         *
          * @var integer $maxlen_real
          */
         $maxlen_real = 2048 - strlen($toolongmsg);
