@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  circuit:
+    build: .
+    container_name: circuit
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../:/opt/circuit-bot/

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# Download generated Swagger PHP client 
+cd "$(dirname "$(readlink -f "${0}")")/../"
+
+# Download generated Swagger PHP client
 # As of 12 Sep 2017 generator certificate chain is incomplete so we're using an static one-
 
 CURL="curl --cacert .chain.pem" # --cacert chain.pem is the workaround incomplete certificate chain

@@ -1,5 +1,5 @@
 FROM php:7.0-cli
-COPY . /opt/circuit-bot/
+#COPY ./ /opt/circuit-bot/
 WORKDIR /opt/circuit-bot/
 RUN yes | (apt-get update && apt-get install git zip unzip jq)
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
