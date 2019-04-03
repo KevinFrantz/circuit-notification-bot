@@ -19,7 +19,7 @@ Bootstrap your bot by cloning the repo and setting up the API client:
 ```bash
 git clone git@github.com:atosorigin/circuit-notification-bot.git circuit-bot
 cd circuit-bot
-./fetch-api-client.sh
+./administration/fetch-api-client.sh
 ```
 
 More about the API Client and an alternative way to install in [General Requirements](#general-requirements) below.
