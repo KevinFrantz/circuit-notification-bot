@@ -1,5 +1,10 @@
 #!/usr/bin/env php
 <?php
+
+const CONFIG_FILE_PATH = './config.php';
+
+const CIRCUIT_SANDBOX_HOST_URL = 'https://circuitsandbox.net';
+
 if(count($argv) < 2)
 {
     fwrite(STDERR, "ERROR: This script takes one or two argument(s). For more execute \"{$argv[0]} help\".\n");
@@ -26,12 +31,17 @@ if(is_dir($bot_dir))
 
     require_once('./vendor/autoload.php');
 
-    $config_file = './config.php';
+    $config_file = CONFIG_FILE_PATH;
+
+    /**
+     * In the following lines the variable will be tested, if it is an array, also if it's not modified. 
+     * @todo Ask if this is correct, or what the idea behind it is and modify it. 
+     */
     $config;
 
     if(is_file($config_file))
     {
-        require_once('./config.php'); // . is PWD not __DIR__ !
+        require_once($config_file); // . is PWD not __DIR__ !
     }
     elseif(!is_array($config)) // this file meight be included and config already set.
     {
@@ -49,7 +59,7 @@ if(is_dir($bot_dir))
 
         if($host == "sandbox")
         {
-            $host = "https://circuitsandbox.net";
+            $host = CIRCUIT_SANDBOX_HOST_URL;
         }
 
         system("curl -d client_id={$config['client']['id']} -d client_secret={$config['client']['secret']} -d grant_type=client_credentials -d scope=ALL ${host}/oauth/token");
