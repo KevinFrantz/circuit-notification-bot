@@ -4,3 +4,6 @@ config.php
 vendor/
 token_*
 /bot/
+.buildpath
+.project
+.settings/
