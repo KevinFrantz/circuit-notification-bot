@@ -11,9 +11,11 @@ const CONFIG_FILE_PATH = './config.php';
  */
 const CIRCUIT_SANDBOX_HOST_URL = 'https://circuitsandbox.net';
 
+const GET_TOKEN_PARAMETER = 'token';
+
 /**
  * @todo Ask if the constant describes the use case right
- * @var string The circuit production url 
+ * @var string The circuit production url
  */
 const CIRCUIT_PRODUCTION_URL = 'https://eu.yourcircuit.com';
 
@@ -48,7 +50,7 @@ $test_plugin=isset($argv[2]) && $argv[2] == "test_plugin";
  * @todo Describe this variable
  * @var Ambiguous $get_token
  */
-$get_token=isset($argv[2]) && $argv[2] == "token";
+$get_token=isset($argv[2]) && $argv[2] == GET_TOKEN_PARAMETER;
 
 if(is_dir($bot_dir))
 {
@@ -82,7 +84,9 @@ if(is_dir($bot_dir))
             $host = CIRCUIT_SANDBOX_HOST_URL;
         }
 
-        system("curl -d client_id={$config['client']['id']} -d client_secret={$config['client']['secret']} -d grant_type=client_credentials -d scope=ALL ${host}/oauth/token");
+        $scopes = implode(["READ_USER_PROFILE", "WRITE_USER_PROFILE", "READ_CONVERSATIONS", "WRITE_CONVERSATIONS", "READ_USER", "CALLS"], ",");
+
+        system("curl -d client_id={$config['client']['id']} -d client_secret={$config['client']['secret']} -d grant_type=client_credentials -d scope=$scopes ${host}/oauth/token");
 
         exit(0);
     }
