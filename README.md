@@ -19,7 +19,7 @@ Bootstrap your bot by cloning the repo and setting up the API client:
 ```bash
 git clone git@github.com:atosorigin/circuit-notification-bot.git circuit-bot
 cd circuit-bot
-./administration/fetch-api-client.sh
+bash ./administration/fetch-api-client.sh
 ```
 
 More about the API Client and an alternative way to install in [General Requirements](#general-requirements) below.
@@ -28,6 +28,12 @@ All the internal dependencies are not available publicly, so you should add your
 Updates are just a pulling and rebasing (or merging; whatever you prefer) upstream.
 
 Monolithic repo (mono-repo) in this case means that all modules of the project are in one repository. Not using an monolithic tree (mono-tree) means that the modules are still in their own distinct folders.
+
+## Development Environment
+To start the development environment execute
+```bash
+bash ./administration/bootstrap.sh
+```
 
 # Theoretical Architecture
 
