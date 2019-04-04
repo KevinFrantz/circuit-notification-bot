@@ -11,10 +11,10 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../*"
+            "url": "../../lib/*"
         }
     ],
     "require": {
-        "ciis0/circuit-bot": "dev-master"
-    },
+        "ciis0/circuit-bot": "*"
+    }
 }
